@@ -5,12 +5,16 @@
  */
 package biblioteca;
 
+import biblioteca.controllers.UsuariosController;
+import biblioteca.models.Usuario;
+import java.io.IOException;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
@@ -19,28 +23,57 @@ import javafx.stage.Stage;
  */
 public class Biblioteca extends Application {
     
+    private Stage primaryStage;
+    private BorderPane rootLayout;
+    private ObservableList<Usuario> usuariosList = FXCollections.observableArrayList();
+    
+    public Biblioteca(){
+        usuariosList.add(new Usuario(123, "Marco", "Lopez", 12345678, "Guatemala"));
+        usuariosList.add(new Usuario(321, "Mario", "Perez", 78954632, "Guatemala"));
+        usuariosList.add(new Usuario(456, "Alfredo", "Zidane", 45669873, "Guatemala"));
+    }
+    
     @Override
     public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
+        this.primaryStage = primaryStage;
+        this.primaryStage.setTitle("Biblioteca HT");
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Biblioteca.class.getResource("views/RootLayout.fxml"));
+            rootLayout = (BorderPane) loader.load();
+            Scene scene = new Scene(rootLayout);
             
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-        
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        
-        Scene scene = new Scene(root, 300, 250);
-        
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        showUsuarios();
     }
 
+    public void showUsuarios(){
+    try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Biblioteca.class.getResource("views/Usuarios.fxml"));
+            AnchorPane usuariosPane = (AnchorPane) loader.load();
+            UsuariosController controller = loader.getController();
+            controller.setBiblio(this);
+            rootLayout.setCenter(usuariosPane);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    public ObservableList<Usuario> getUsuariosList() {
+        return usuariosList;
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
