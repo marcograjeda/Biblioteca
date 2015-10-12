@@ -5,6 +5,8 @@
  */
 package biblioteca;
 
+import biblioteca.controllers.AutoresController;
+import biblioteca.controllers.RootLayoutController;
 import biblioteca.controllers.UsuariosController;
 import biblioteca.models.Usuario;
 import java.io.IOException;
@@ -41,6 +43,8 @@ public class Biblioteca extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Biblioteca.class.getResource("views/RootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
+            RootLayoutController controller = loader.getController();
+            controller.setBiblio(this);
             Scene scene = new Scene(rootLayout);
             
             primaryStage.setScene(scene);
@@ -48,10 +52,9 @@ public class Biblioteca extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        showUsuarios();
     }
 
-    public void showUsuarios(){
+    public void mostrarUsuarios(){
     try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Biblioteca.class.getResource("views/Usuarios.fxml"));
@@ -59,6 +62,20 @@ public class Biblioteca extends Application {
             UsuariosController controller = loader.getController();
             controller.setBiblio(this);
             rootLayout.setCenter(usuariosPane);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void mostrarAutores(){
+    try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Biblioteca.class.getResource("views/Autores.fxml"));
+            AnchorPane autoresPane = (AnchorPane) loader.load();
+            AutoresController controller = loader.getController();
+            controller.setBiblio(this);
+            rootLayout.setCenter(autoresPane);
             
         } catch (Exception e) {
             e.printStackTrace();

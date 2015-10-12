@@ -8,14 +8,14 @@ package biblioteca.controllers;
 import biblioteca.Biblioteca;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
- * FXML Controller class
  *
- * @author informatica
+ * @author Marco
  */
-public class AutoresController implements Initializable {
+public class RootLayoutController implements Initializable{
 
     private Biblioteca biblio;
 
@@ -23,12 +23,23 @@ public class AutoresController implements Initializable {
         this.biblio = biblio;
     }
     
-    /**
-     * Initializes the controller class.
-     */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    public void initialize(URL location, ResourceBundle resources) {
     
+    }
+    
+    @FXML
+    private void salirAplicacion(){
+        System.exit(0);
+    }
+    
+    @FXML
+    private void mostrarUsuariosCRUD(){
+        this.biblio.mostrarUsuarios();
+    }
+    
+    @FXML
+    private void mostrarAutoresCRUD(){
+        this.biblio.mostrarAutores();
+    }
 }

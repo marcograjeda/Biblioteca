@@ -9,6 +9,8 @@ import biblioteca.Biblioteca;
 import biblioteca.models.Usuario;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -29,10 +31,6 @@ public class UsuariosController implements Initializable {
     private TableColumn<Usuario, String> tbcNombre;
     @FXML
     private TableColumn<Usuario, String> tbcApellido;
-    @FXML
-    private TableColumn<Usuario, String> tbcTelefono;
-    @FXML
-    private TableColumn<Usuario, String> tbcDireccion;
     
     private Biblioteca biblio;
 
@@ -51,8 +49,20 @@ public class UsuariosController implements Initializable {
         tbcID.setCellValueFactory(new PropertyValueFactory<Usuario, String>("codigo"));
         tbcNombre.setCellValueFactory(new PropertyValueFactory<Usuario, String>("nombre"));
         tbcApellido.setCellValueFactory(new PropertyValueFactory<Usuario, String>("apellido"));
-        tbcTelefono.setCellValueFactory(new PropertyValueFactory<Usuario, String>("telefono"));
-        tbcDireccion.setCellValueFactory(new PropertyValueFactory<Usuario, String>("direccion"));
+        
+        tbvUsuarios.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        
+        tbvUsuarios.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Usuario>() {        
+            @Override
+            public void changed(ObservableValue <? extends Usuario> observable,
+                Usuario oldValue, Usuario newValue) {
+                System.out.println("Selecion cambiada");
+                if (oldValue != null){
+                System.out.println(oldValue.getNombre());
+                }
+                System.out.println(newValue.getNombre());
+            }
+        });
     }    
     
 }
