@@ -67,6 +67,7 @@ public class Biblioteca extends Application {
             error.showAndWait();
             e.printStackTrace();
         }
+        this.usuariosList = Usuario.getUsuariosList();
     }
 
     public void mostrarUsuarios(){

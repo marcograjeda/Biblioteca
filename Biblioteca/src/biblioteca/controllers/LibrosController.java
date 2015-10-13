@@ -44,6 +44,6 @@ public class LibrosController implements Initializable {
         //tbcID.setCellValueFactory(new PropertyValueFactory<Libro, String>("codigo"));
         //tbcTitulo.setCellValueFactory(new PropertyValueFactory<Libro, String>("titulo"));
         
-        tbvLibros.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        //tbvLibros.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }    
 }
