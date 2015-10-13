@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 import biblioteca.helpers.Conexion;
 import biblioteca.models.Libro;
-//import org.claudiocanel.utilidades.FechaHora;
-//import org.claudiocanel.utilidades.InformacionDelSistema;
 
 
 /**

@@ -14,8 +14,6 @@ import java.util.Calendar;
 import java.util.Date;
 import biblioteca.models.Prestamo;
 import biblioteca.helpers.Conexion;
-//import org.claudiocanel.utilidades.FechaHora;
-//import org.claudiocanel.utilidades.InformacionDelSistema;
 
 
 /**
