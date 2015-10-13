@@ -10,34 +10,34 @@ package biblioteca.models;
  *
  * @author Marco
  */
-public class Autor {
-        private int idAutor;
+public class Editorial {
+        private int idEditorial;
 	private String nombre;
 		
-	public Autor(int var1, String var2) {
+	public Editorial(int var1, String var2) {
 		nombre = var2;
-		idAutor = var1;
+		idEditorial = var1;
 	}
 	
 
 	//Get y Set
 	//SET
-	public void setIdAutor(int valor) {
-		idAutor = valor;
+	public void setIdEditorial(int valor) {
+		idEditorial = valor;
 	}
 	
-	public void setNombreAutor(String valor) {
+	public void setNombreEditorial(String valor) {
 		nombre = valor;
 	}
 
 	//GET
-	public int getIdAutor() {
-		return idAutor;
+	public int getIdEditorial() {
+		return idEditorial;
 	}
 	
-	public String getNombreAutor() {
+	public String getNombreEditorial() {
 		return nombre;
 	}
 
-	
+    
 }

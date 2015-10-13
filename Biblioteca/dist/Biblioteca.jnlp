@@ -8,11 +8,12 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Biblioteca.jar" size="25794" download="eager" />
+    <jar href="Biblioteca.jar" size="53244" download="eager" />
+    <jar href="lib/sqljdbc41.jar" size="586192" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Biblioteca" >
     <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
-  <jfx:javafx-desc  width="800" height="600" main-class="biblioteca.Biblioteca"  name="Biblioteca" />
+  <jfx:javafx-desc  width="800" height="600" main-class="biblioteca.ui.Principal"  name="Biblioteca" />
   <update check="always"/>
 </jnlp>

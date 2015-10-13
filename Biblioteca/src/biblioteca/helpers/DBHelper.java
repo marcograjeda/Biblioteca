@@ -20,11 +20,10 @@ public class DBHelper {
     private static final String DB_SERVER = "localhost:1433";
     private static final String DB_INSTANCE = "SQLEXPRESS";
     private static final String DB_NAME = "BibliotecaHojaTrabajo";
-    
+     
     public DBHelper() throws ClassNotFoundException, SQLException{
         Class.forName(DRIVER);
-        connection =  DriverManager.getConnection("jdbc:sqlserver://" + DB_SERVER + ";instanceName=" + DB_INSTANCE +";"
-                + "databaseName=" + DB_NAME+ ";user=sa"+";"+"password=sa");
+        connection =  DriverManager.getConnection("jdbc:sqlserver://127.0.0.1\\SQL2013344:1433;databaseName=BibliotecaHojaTrabajo; user=admin;password=admin");
     }
     
     public static Connection getConnection() throws ClassNotFoundException, SQLException{

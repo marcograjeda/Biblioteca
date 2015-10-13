@@ -3,103 +3,65 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package biblioteca.models;
 
-import biblioteca.helpers.DBHelper;
-import biblioteca.helpers.Dialogs;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
+package biblioteca.models;
 
 /**
  *
  * @author Marco
  */
 public class Usuario {
-    
-    protected int codigo;
-    protected String nombre;
-    protected String apellido;
-    protected int telefono;
-    protected String direccion;
+        private int idUsuario;
+        private String rango;
+	private String nombre;
+	private String clave;
+		
+	public Usuario(int var1, String var4, String var2, String var3) {
+		nombre = var2;
+                rango = var4;
+		idUsuario = var1;
+		clave = var3;
+	}
+	
 
-    public Usuario(int codigo, String nombre, String apellido, int telefono, String direccion) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.telefono = telefono;
-        this.direccion = direccion;
-    }
-    
-    public Usuario(){
+	//Get y Set
+	//SET
+	public void setIdUsuario(int valor) {
+		idUsuario = valor;
+	}
+	
+	public void setNombreUsuario(String valor) {
+		nombre = valor;
+	}
+	
+	public void setClaveUsuario(String valor) {
+		clave = valor;
+	}
+	
+	//GET
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+	
+	public String getNombreUsuario() {
+		return nombre;
+	}
+	
+	public String getClaveUsuario() {
+		return clave;
+	}
+
+        public String getRangoUsuario() {
+		return rango;
+	}
         
-    }
+	//GET GENERAL	
+	public String getDatosUsuario() {
+		String g2 = "\n ID: " + idUsuario;
+		String g1 = "\n Nombre: " + nombre + "\n";
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public int getTelefono() {
-        return telefono;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
+		return g2 + g1;
+	}
     
-    public static ObservableList<Usuario> getUsuariosList(){
-        ObservableList<Usuario> usuarios = FXCollections.observableArrayList();
-        
-        try{
-            Connection con = DBHelper.getConnection();
-            String sql = "SELECT * FROM usuario";
-            ResultSet rs = con.createStatement().executeQuery(sql);
-            while(rs.next()){
-                Usuario usuario = new Usuario();
-                
-                usuario.setCodigo(rs.getInt("codigo"));
-                usuario.setNombre(rs.getString("nombre"));
-                usuario.setApellido(rs.getString("apellido"));
-                usuario.setTelefono(rs.getInt("telefono"));
-                usuario.setDireccion(rs.getString("direccion"));
-                
-                usuarios.add(usuario);
-            }
-        }catch(Exception e){
-            Alert error = Dialogs.getErrorDialog(Alert.AlertType.ERROR, "Biblioteca HT", null, "Error al obtener la lista de usuarios", e);
-            error.showAndWait();
-        }
-        
-        return usuarios;
-    }
+    
 }
