@@ -1,4 +1,4 @@
-﻿/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -118,13 +118,11 @@ public class Ventana {
         
         Label lbNombre = new Label("Nombre:");
         Label lbNombreLibro = new Label("Nombre:");
-        Label lbPass = new Label("Contraseña:");
         Label lbAutor = new Label("Autor:");
         Label lbGenero = new Label("Género:");
         Label lbEditorial = new Label("Editorial:");
-        Label lbPrecio = new Label("Precio:");
+        Label lbPrecio = new Label("Páginas:");
         Label lbIsbn = new Label("ISBN:");
-        Label lbRango = new Label("Rango:");
         Label lbAlumno = new Label("Alumno:");
         Label lbDevolucion = new Label("Devolución:");
         Label lbEntrega = new Label("Entrega:");
@@ -172,13 +170,7 @@ public class Ventana {
         
         TableColumn<Usuario,String> tcNombreUsuario = new TableColumn<>("Nombre");
         tcNombreUsuario.setCellValueFactory(new PropertyValueFactory<>("nombreUsuario"));
-        
-        TableColumn<Usuario, String> tcRangoUsuario = new TableColumn<>("Rango");
-        tcRangoUsuario.setCellValueFactory(new PropertyValueFactory<>("rangoUsuario"));
-        
-        TableColumn<Usuario, String> tcClaveUsuario = new TableColumn<>("Contraseña");
-        tcClaveUsuario.setCellValueFactory(new PropertyValueFactory<>("claveUsuario"));
-       
+              
        
         TableColumn<Autor, Integer> tcIdAutor = new TableColumn<>("ID");
         tcIdAutor.setCellValueFactory(new PropertyValueFactory<>("idAutor"));
@@ -235,7 +227,7 @@ public class Ventana {
         
         resultadosUsuario = new TableView(olUsuario);
         //resultadosUsuario.setItems(olUsuario);
-        resultadosUsuario.getColumns().addAll(tcIdUsuario, tcNombreUsuario, tcRangoUsuario, tcClaveUsuario);
+        resultadosUsuario.getColumns().addAll(tcIdUsuario, tcNombreUsuario);
         /*
         TableView<Usuario> resultadosIdUsuario = new TableView();
         resultadosUsuario.setItems(olIdUsuario);
@@ -364,7 +356,6 @@ public class Ventana {
         caja12.getChildren().add(lbPrecio);
         caja12.getChildren().add(txtPrecio);
         
-
         
         caja14.setPadding(new Insets(5));
         caja14.getChildren().add(lbDevolucion);
@@ -374,17 +365,11 @@ public class Ventana {
         caja15.getChildren().add(lbEntrega);
         caja15.getChildren().add(txtEntrega);
         
-        caja16.setPadding(new Insets(5));
-        caja16.getChildren().add(lbRango);
-        caja16.getChildren().add(txtRango);
         
         caja6.setPadding(new Insets(5));
         caja6.getChildren().add(lbNombre);
         caja6.getChildren().add(txtNombre);
         
-        caja7.setPadding(new Insets(5));
-        caja7.getChildren().add(lbPass);
-        caja7.getChildren().add(txtPass);
         
         caja17.setPadding(new Insets(5));
         caja17.getChildren().add(lbNombreLibro);
@@ -506,12 +491,12 @@ public class Ventana {
                 if (title.getText().equals("Usuario")) {
                         if(accion.getText().equals("Agregar")) {
                             int numero = UserManager.getInstancia().getArrayList().size() + 1;
-                            Usuario agregarUserBD = new Usuario(numero, txtRango.getValue(), txtNombre.getText(), txtPass.getText());
+                            Usuario agregarUserBD = new Usuario(numero, txtNombre.getText());
                             UserManager.getInstancia().agregarUsuario(agregarUserBD);
                         } else if(accion.getText().equals("Modificar")) {
                             int numero = resultadosUsuario.getSelectionModel().getSelectedItem().getIdUsuario();
                             System.out.println(numero);
-                            UserManager.getInstancia().editarUsuario(numero, txtRango.getPromptText(), txtPass.getText(), txtNombre.getText());
+                            UserManager.getInstancia().editarUsuario(numero, txtNombre.getText());
                         }
                     olUsuario = FXCollections.observableArrayList(UserManager.getInstancia().getListaUsuario());
                         resultadosUsuario.getItems().clear();

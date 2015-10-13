@@ -70,47 +70,9 @@ public class UserManager {
 		return variableRetorno;
 	}
         
-        public boolean login(String var0, String var1) {
-		boolean variableRetorno = false;
-		if (0 < listaUsuario.size()) {
-			for(int numerillo=0; numerillo < listaUsuario.size(); numerillo++) {
-				if (listaUsuario.get(numerillo).getNombreUsuario().equalsIgnoreCase(var0) && listaUsuario.get(numerillo).getClaveUsuario().equalsIgnoreCase(var1)) {
-					variableRetorno = true;
-				
-                }	//No hay nada ingresado;
-		}
-                }
-		return variableRetorno;
-	
-        }
-        
-        public int loginRango(String var0, String var1) {
-		int variableRetorno = 1; //1 visualizador, 2 editor, 3 admin
-		if (1 < listaUsuario.size()) {
-			for(int numerillo=0; numerillo < listaUsuario.size(); numerillo++) {
-				if (listaUsuario.get(numerillo).getNombreUsuario().equals(var0) && listaUsuario.get(numerillo).getClaveUsuario().equals(var1)) {
-                                    if(listaUsuario.get(numerillo).getRangoUsuario().equalsIgnoreCase("Editor")) {
-                                    variableRetorno = 2;
-                                    } else if(listaUsuario.get(numerillo).getRangoUsuario().equalsIgnoreCase("Administrador")) {
-                                    variableRetorno = 3;
-                                    }
-                                    
-                                    
-				
-                } else {
-					//No hay ninguna coincidencia;
-				}
-			}
-		} else {
-			//No hay nada ingresado;
-		}
-		return variableRetorno;
-	}
         
         
-        
-        
-        
+           
         
         
         
@@ -122,10 +84,8 @@ public class UserManager {
 			try {
 				while (resultadoUsuarios.next()) {
 					int idUsuario = resultadoUsuarios.getInt("idUsuario");
-					String rango = resultadoUsuarios.getString("rango");
 					String nombreUsuario = resultadoUsuarios.getString("nombreUsuario");
-					String contrasenaUsuario = resultadoUsuarios.getString("clave");
-					Usuario usuario = new Usuario(idUsuario, rango, nombreUsuario, contrasenaUsuario);
+					Usuario usuario = new Usuario(idUsuario, nombreUsuario);
 					listaUsuario.add(usuario);
 				}
 			} catch (SQLException e) {
@@ -143,10 +103,8 @@ public class UserManager {
 			try {
 				while (resultadoUsuarios.next()) {
 					int idUsuario = resultadoUsuarios.getInt("idUsuario");
-					String rango = resultadoUsuarios.getString("rango");
 					String nombreUsuario = resultadoUsuarios.getString("nombreUsuario");
-					String contrasenaUsuario = resultadoUsuarios.getString("clave");
-					Usuario usuario = new Usuario(idUsuario, rango, nombreUsuario, contrasenaUsuario);
+					Usuario usuario = new Usuario(idUsuario, nombreUsuario);
 					listaUsuario.add(usuario);
 				}
 			} catch (SQLException e) {
@@ -163,10 +121,8 @@ public class UserManager {
 			try {
 				while (resultadoUsuarios.next()) {
 					int idUsuario = resultadoUsuarios.getInt("idUsuario");
-					String rango = resultadoUsuarios.getString("rango");
 					String nombreUsuario = resultadoUsuarios.getString("nombreUsuario");
-					String contrasenaUsuario = resultadoUsuarios.getString("clave");
-					Usuario usuario = new Usuario(idUsuario, rango, nombreUsuario, contrasenaUsuario);
+					Usuario usuario = new Usuario(idUsuario, nombreUsuario);
 					listaUsuario.add(usuario);
 				}
 			} catch (SQLException e) {
@@ -190,14 +146,12 @@ public class UserManager {
 	}
 	
 	public void agregarUsuario(Usuario usuario) {
-		String tipoUsuario = usuario.getRangoUsuario();
 		String nick = usuario.getNombreUsuario(); 
-		String contrasena = usuario.getClaveUsuario();
-		Conexion.getInstancia().ejecutarConsulta("EXEC CrearUsuario '" + nick + "', '" + tipoUsuario + "', '" + contrasena + "'");
+		Conexion.getInstancia().ejecutarConsulta("EXEC CrearUsuario " + nick );
 	}
 	
-	public void editarUsuario(int id, String idRol, String contrasena, String nickUsuario) {
-		Conexion.getInstancia().ejecutarConsulta("EXEC ModificarUsuario '" + nickUsuario + "', '" + idRol + "', '" + contrasena + "', " + id + "");
+	public void editarUsuario(int id, String nickUsuario) {
+		Conexion.getInstancia().ejecutarConsulta("EXEC ModificarUsuario '" + nickUsuario + "', "+  id);
 	}
 
 	public void eliminarUsuario(int id) {

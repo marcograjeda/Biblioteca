@@ -39,7 +39,7 @@ CREATE TABLE Libro (
 	isbn VARCHAR(255) NOT NULL,
 	nombreLibro VARCHAR(255) NOT NULL,
 	idEditorial INT NOT NULL,
-	precio MONEY NOT NULL,
+	paginas INT NOT NULL,
 	disponible BIT NOT NULL,
 	PRIMARY KEY(idLibro),
 	FOREIGN KEY (idEditorial) REFERENCES Editorial(idEditorial)
@@ -63,7 +63,7 @@ CREATE TABLE Prestamo (
 
 CREATE VIEW VistaLibro
 AS
-	SELECT Libro.idLibro, Libro.nombreLibro AS 'Nombre', isbn, Editorial.nombreEditorial AS 'Editorial', Libro.precio, disponible FROM Libro
+	SELECT Libro.idLibro, Libro.nombreLibro AS 'Nombre', isbn, Editorial.nombreEditorial AS 'Editorial', Libro.paginas, disponible FROM Libro
 		INNER JOIN Editorial ON Libro.idEditorial = Editorial.idEditorial
 GO
 
@@ -175,10 +175,10 @@ GO
 	@nombre AS VARCHAR(255),
 	@isbn AS VARCHAR(255),
 	@idEditorial AS INT,
-	@precio AS MONEY
+	@paginas AS INT
 AS
-	INSERT INTO Libro(nombreLibro, isbn, idEditorial, precio, disponible)
-		VALUES(@nombre, @isbn, @idEditorial, @precio, '1')
+	INSERT INTO Libro(nombreLibro, isbn, idEditorial, paginas, disponible)
+		VALUES(@nombre, @isbn, @idEditorial, @paginas, '1')
 GO
 
 CREATE PROCEDURE ModificarLibro
@@ -186,9 +186,9 @@ CREATE PROCEDURE ModificarLibro
 	@nombre AS VARCHAR(255),
 	@isbn AS VARCHAR(255),
 	@idEditorial AS INT,
-	@precio AS MONEY
+	@paginas AS Int
 AS
-	UPDATE Libro SET nombreLibro = @nombre, isbn = @isbn, idEditorial = @idEditorial, precio = @precio
+	UPDATE Libro SET nombreLibro = @nombre, isbn = @isbn, idEditorial = @idEditorial, paginas = @paginas
 		WHERE Libro.idLibro = @id
 GO
 
@@ -220,3 +220,54 @@ AS
 		WHERE Libro.idLibro = @idLibro
 GO
 
+INSERT INTO Autor VALUES ('Dante Aligeri'),
+('Dan Brown'),
+('Gabriel Garcia Marquez'),
+('Homero'),
+('Jose Batres Montufar'),
+('Paulo Coelho'),
+('Jose Milla'),
+('Howard Phillips'),
+('Jenofonte'),
+('Isabel Allende')
+
+INSERT INTO Editorial VALUES('Casa Blanca'),
+('Cocodrilo'),
+('Beso'),
+('Ciento'),
+('Roma'),
+('Mora'),
+('Ayta'),
+('Atya'),
+('Lanik')
+
+INSERT INTO Libro VALUES('As45', 'Divinina Comedia',  1, 200, 1),
+('askL45', 'Inferno', 2, 155, 1),
+('Cz91', 'Cien Anios de Soledad', 3, 250, 1),
+('DX82', 'Odisea', 4, 350, 1),
+('Ey73', 'Don Pablo', 5, 178, 1),
+('Fv64', 'El Alquimista', 6, 450, 1),
+('gW55', 'La historia de un Pepe', 7, 100, 1),
+('hU46', 'En las montañas de la locura', 8, 125, 1),
+('IT60', 'Anabasis',9, 360, 1),
+('JK25', 'Eva Luna', 9, 890, 1)
+
+INSERT INTO Rango VALUES ('Bibliotecario'),
+('Lector')
+
+INSERT INTO Usuario VALUES('Marco', 'Lector', 'Marco'),
+('Mario', 'Lector', 'Mario'),
+('Luis', 'Lector', 'Luis'),
+('Jose', 'Lector', 'Jose'),
+('Javier', 'Lector', 'Javier'),
+('Andrea', 'Lector', 'Andrea'),
+('Ignacio', 'Lector', 'Ignacio'),
+('Nicolle', 'Lector', 'Nicolle'),
+('Monica', 'Lector', 'Monica'),
+('Diego', 'Lector', 'Diego')
+
+Select * from rango
+select * from usuario
+select * from libro
+select * from autor
+select * from editorial

@@ -15,7 +15,7 @@ import biblioteca.models.Autor;
 
 /**
  *
- * @author JD
+ * @author Marco
  */
 public class AutorManager {
    

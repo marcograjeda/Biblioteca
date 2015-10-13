@@ -16,7 +16,7 @@ import biblioteca.models.Libro;
 
 /**
  *
- * @author JD
+ * @author Marco
  */
 public class BookManager {
    

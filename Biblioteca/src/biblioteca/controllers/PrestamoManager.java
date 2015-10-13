@@ -18,7 +18,7 @@ import biblioteca.helpers.Conexion;
 
 /**
  *
- * @author JD
+ * @author Marco
  */
 public class PrestamoManager {
    

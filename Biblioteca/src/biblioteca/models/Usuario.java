@@ -12,15 +12,11 @@ package biblioteca.models;
  */
 public class Usuario {
         private int idUsuario;
-        private String rango;
 	private String nombre;
-	private String clave;
 		
-	public Usuario(int var1, String var4, String var2, String var3) {
+	public Usuario(int var1, String var2) {
 		nombre = var2;
-                rango = var4;
 		idUsuario = var1;
-		clave = var3;
 	}
 	
 
@@ -34,9 +30,7 @@ public class Usuario {
 		nombre = valor;
 	}
 	
-	public void setClaveUsuario(String valor) {
-		clave = valor;
-	}
+
 	
 	//GET
 	public int getIdUsuario() {
@@ -47,21 +41,8 @@ public class Usuario {
 		return nombre;
 	}
 	
-	public String getClaveUsuario() {
-		return clave;
-	}
-
-        public String getRangoUsuario() {
-		return rango;
-	}
         
-	//GET GENERAL	
-	public String getDatosUsuario() {
-		String g2 = "\n ID: " + idUsuario;
-		String g1 = "\n Nombre: " + nombre + "\n";
 
-		return g2 + g1;
-	}
     
     
 }
