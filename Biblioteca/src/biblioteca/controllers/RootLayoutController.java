@@ -52,4 +52,9 @@ public class RootLayoutController implements Initializable{
     private void mostrarEjemplares(){
         this.biblio.mostrarEjemplares();
     }
+    
+    @FXML
+    private void mostrarPrestamosCRUD(){
+        this.biblio.mostrarPrestamo();
+    }
 }

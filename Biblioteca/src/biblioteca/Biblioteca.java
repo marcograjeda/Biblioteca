@@ -9,6 +9,7 @@ import biblioteca.controllers.AutoresController;
 import biblioteca.controllers.EjemplarController;
 import biblioteca.controllers.IngresarAutorController;
 import biblioteca.controllers.LibrosController;
+import biblioteca.controllers.PrestamoController;
 import biblioteca.controllers.RootLayoutController;
 import biblioteca.controllers.UsuariosController;
 import biblioteca.helpers.Dialogs;
@@ -68,6 +69,7 @@ public class Biblioteca extends Application {
             e.printStackTrace();
         }
         this.usuariosList = Usuario.getUsuariosList();
+        this.autoresList = Autor.getAutoresList();
     }
 
     public void mostrarUsuarios(){
@@ -121,11 +123,27 @@ public class Biblioteca extends Application {
     public void mostrarEjemplares(){
     try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Biblioteca.class.getResource("views/Ejemplares.fxml"));
+            loader.setLocation(Biblioteca.class.getResource("views/Ejemplar.fxml"));
             AnchorPane librosPane = (AnchorPane) loader.load();
             EjemplarController controller = loader.getController();
             controller.setBiblio(this);
             rootLayout.setCenter(librosPane);
+            
+        } catch (Exception e) {
+            Alert error = Dialogs.getErrorDialog(Alert.AlertType.ERROR, "Biblioteca HT", null, "Error al cargar el archivo FXML", e);
+            error.showAndWait();
+            e.printStackTrace();
+        }
+    }
+    
+    public void mostrarPrestamo(){
+    try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Biblioteca.class.getResource("views/Prestamo.fxml"));
+            AnchorPane prestamoPane = (AnchorPane) loader.load();
+            PrestamoController controller = loader.getController();
+            controller.setBiblio(this);
+            rootLayout.setCenter(prestamoPane);
             
         } catch (Exception e) {
             Alert error = Dialogs.getErrorDialog(Alert.AlertType.ERROR, "Biblioteca HT", null, "Error al cargar el archivo FXML", e);

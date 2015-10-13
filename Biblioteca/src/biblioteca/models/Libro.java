@@ -24,6 +24,9 @@ public class Libro {
         this.paginas = paginas;
     }
 
+    public Libro() {
+    }
+
     public int getCodigo() {
         return codigo;
     }
@@ -42,6 +45,26 @@ public class Libro {
 
     public int getPaginas() {
         return paginas;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public void setEditorial(String editorial) {
+        this.editorial = editorial;
+    }
+
+    public void setPaginas(int paginas) {
+        this.paginas = paginas;
     }
     
     

@@ -20,6 +20,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#mostrarAutoresCRUD" text="Autores" />
                   <MenuItem mnemonicParsing="false" onAction="#mostrarEjemplares" text="Ejemplares" />
                   <MenuItem mnemonicParsing="false" onAction="#mostrarLibrosCRUD" text="Libros" />
+                  <MenuItem mnemonicParsing="false" onAction="#mostrarPrestamosCRUD" text="Prestamos" />
                 <MenuItem mnemonicParsing="false" onAction="#mostrarUsuariosCRUD" text="Usuarios" />
               </items>
             </Menu>

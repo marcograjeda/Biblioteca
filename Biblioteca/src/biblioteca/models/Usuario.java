@@ -82,12 +82,12 @@ public class Usuario {
         
         try{
             Connection con = DBHelper.getConnection();
-            String sql = "SELECT * FROM alumno";
+            String sql = "SELECT * FROM usuario";
             ResultSet rs = con.createStatement().executeQuery(sql);
             while(rs.next()){
                 Usuario usuario = new Usuario();
                 
-                usuario.setCodigo(rs.getInt("carne"));
+                usuario.setCodigo(rs.getInt("codigo"));
                 usuario.setNombre(rs.getString("nombre"));
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setTelefono(rs.getInt("telefono"));
@@ -96,7 +96,7 @@ public class Usuario {
                 usuarios.add(usuario);
             }
         }catch(Exception e){
-            Alert error = Dialogs.getErrorDialog(Alert.AlertType.ERROR, "Biblioteca HT", null, "Error obtener la lista de alumnos", e);
+            Alert error = Dialogs.getErrorDialog(Alert.AlertType.ERROR, "Biblioteca HT", null, "Error al obtener la lista de usuarios", e);
             error.showAndWait();
         }
         

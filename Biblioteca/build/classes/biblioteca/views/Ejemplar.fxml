@@ -43,5 +43,8 @@
             </AnchorPane>
         </items>
       </SplitPane>
+      <Button layoutX="139.0" layoutY="359.0" mnemonicParsing="false" text="Ingresar" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="140.0" />
+    <Button layoutX="214.0" layoutY="359.0" mnemonicParsing="false" text="Editar" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="82.0" />
+    <Button layoutX="270.0" layoutY="359.0" mnemonicParsing="false" text="Eliminar" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
    </children>
 </AnchorPane>

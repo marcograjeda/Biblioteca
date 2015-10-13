@@ -40,16 +40,11 @@ GO
 CREATE TABLE Prestamo(
 codigoE INT FOREIGN KEY REFERENCES Ejemplar(codigo),
 codigoU INT FOREIGN KEY REFERENCES Usuario(codigo),
-fecha DATE
+fechaEntrega DATE,
+fechaDevolucion DATE
 )
 
-GO 
-CREATE TABLE Devolucion(
-codigoE INT FOREIGN KEY REFERENCES Ejemplar(codigo),
-codigoU INT FOREIGN KEY REFERENCES Usuario(codigo),
-fecha DATE
-)
-
+GO
 INSERT INTO Autor VALUES ('Dante Aligeri'),
 ('Dan Brown'),
 ('Gabriel Garcia Marquez'),
@@ -112,12 +107,8 @@ INSERT INTO Prestamo VALUES (10,1, '2015/05/01'),
 (8,3, '2015/07/20'),
 (9,2, '2015/08/08')
 
-GO
-INSERT INTO Devolucion VALUES (10,1, '2015/05/06')
-
 Select * From Autor
 Select * From Autor_Libro
-Select * From Devolucion
 Select * From Ejemplar
 Select * From Libro
 Select * From Prestamo

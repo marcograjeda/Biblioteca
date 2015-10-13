@@ -20,6 +20,10 @@ public class Ejemplar {
         this.localizacion = localizacion;
     }
 
+    public Ejemplar() {
+        
+    }
+
     public int getCodigo() {
         return codigo;
     }
@@ -30,6 +34,18 @@ public class Ejemplar {
 
     public String getLocalizacion() {
         return localizacion;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setCodigoLibro(int codigoLibro) {
+        this.codigoLibro = codigoLibro;
+    }
+
+    public void setLocalizacion(String localizacion) {
+        this.localizacion = localizacion;
     }
     
     
